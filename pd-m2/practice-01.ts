@@ -1,3 +1,5 @@
+// ! type assertion
+
 let anyThing: any;
 
 anyThing = 123;
