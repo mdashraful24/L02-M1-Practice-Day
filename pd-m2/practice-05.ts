@@ -33,7 +33,7 @@ console.log(mixedArray);
 // ? T = type of each student object
 // ? T[] = array of that type
 
-interface AllStudents<T> {
+interface AllStudents<T> extends RequiredInfo {
     id: number,
     name: string,
     stuFeatures: T;
@@ -43,6 +43,16 @@ interface StudentFeatures {
     hasPen?: boolean;
     hasCar?: boolean;
     girlFriend?: boolean;
+}
+
+interface RequiredInfo {
+    birthDate: string;
+    bloodGroup: string;
+    address: {
+        division: string;
+        district: string;
+        cityOrVillage: string;
+    }
 }
 
 const addStudentInfoToTable = <T>(...studentInfo: T[]) => {
@@ -59,6 +69,13 @@ const student1: AllStudents<StudentFeatures> = {
     name: "Hakim",
     stuFeatures: {
         hasPen: true
+    },
+    birthDate: "12/12/12",
+    bloodGroup: "O+",
+    address: {
+        division: "Dhaka",
+        district: "Gazipur",
+        cityOrVillage: "Banshkopa"
     }
 };
 
@@ -68,9 +85,32 @@ const student2: AllStudents<StudentFeatures> = {
     stuFeatures: {
         hasCar: true,
         girlFriend: false
+    },
+    birthDate: "12/12/12",
+    bloodGroup: "O+",
+    address: {
+        division: "Dhaka",
+        district: "Gazipur",
+        cityOrVillage: "Banshkopa"
+    }
+};
+
+const student3: AllStudents<StudentFeatures> = {
+    id: 345,
+    name: "Aziz",
+    stuFeatures: {
+        hasCar: true,
+        girlFriend: false
+    },
+    birthDate: "12/12/12",
+    bloodGroup: "O+",
+    address: {
+        division: "Dhaka",
+        district: "Gazipur",
+        cityOrVillage: "Banshkopa"
     }
 };
 
 // const result1 = addStudentToTable(student1);
 
-console.log(addStudentInfoToTable(student1, student2));
+console.log(addStudentInfoToTable(student1, student2, student3));
